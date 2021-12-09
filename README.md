@@ -7,6 +7,6 @@
   * Loadremover
 
 ## Credits
-  * [Wiperfinger] https://github.com/Wipe (founder/developer)
-  * [Mysterion06] https://github.com/Mysterion06 (developer)
-  * [Yuushi] https://www.speedrun.com/user/Yuushi (developer)
+  * [Wiperfinger](https://github.com/Wipe) (founder/developer)
+  * [Mysterion06](https://github.com/Mysterion06) (developer)
+  * [Yuushi](https://www.speedrun.com/user/Yuushi) (developer)
