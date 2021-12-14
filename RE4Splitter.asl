@@ -61,6 +61,7 @@ startup
 	settings.Add("Item165GameMode1", true, "Emblem (Left half)", "MainGameItemSplits");
 	settings.Add("Item59GameMode1", true, "Insignia Key", "MainGameItemSplits");
 	settings.Add("Item60GameMode1", true, "Round Insignia", "MainGameItemSplits");
+	settings.Add("Item140GameMode1", true, "Camp Key", "MainGameItemSplits");
 	settings.Add("Item139GameMode1", true, "Old Key", "MainGameItemSplits");
 	settings.Add("Item61GameMode1", true, "False Eye", "MainGameItemSplits");
 	settings.Add("Item128GameMode1", true, "Golden Sword", "MainGameItemSplits");
@@ -196,7 +197,7 @@ init
 	}
 
 	// Initializing Variables
-	vars.timerModel = new TimerModel { CurrentState = timer };
+	vars.TimerModel = new TimerModel { CurrentState = timer };
 
 	Action ResetVariables = () => {
 		vars.gameMode = 0;
@@ -271,14 +272,14 @@ split
 	}
 
 	// Assignment Ada Splits
-	if ((current.fslPlaga > old.fslPlaga || current.tfPlaga > old.tfPlaga) && (settings["Sample" + current.fslPlaga.ToString()] || settings["Sample" + current.tfPlaga.ToString()]) && vars.gameMode == 3)
+	if ((current.fslPlaga > old.fslPlaga || current.tfPlaga > old.tfPlaga) && vars.gameMode == 3)
 	{
-		if ((current.fslPlaga == 8 || current.fslPlaga == 12 || current.fslPlaga == 28) && !vars.ObtainedPlagaSamples.Contains(current.fslPlaga))
+		if (!vars.ObtainedPlagaSamples.Contains(current.fslPlaga) && settings["Sample" + current.fslPlaga.ToString()])
 		{
 			vars.ObtainedPlagaSamples.Add(current.fslPlaga);
 			return true;
 		}
-		if ((current.tfPlaga == 1073741824 || current.tfPlaga == 1342177280) && !vars.ObtainedPlagaSamples.Contains(current.tfPlaga))
+		if (!vars.ObtainedPlagaSamples.Contains(current.tfPlaga) && settings["Sample" + current.tfPlaga.ToString()])
 		{
 			vars.ObtainedPlagaSamples.Add(current.tfPlaga);
 			return true;
@@ -292,7 +293,7 @@ split
 	}
 
 	// Split at the Bridge Door after reunited with Ashley
-	if (current.currentArea == 174 && old.currentArea == 207 && current.isEndOfChapter >= 655360)
+	if (current.currentArea == 174 && old.currentArea == 207 && current.isEndOfChapter >= 655360 && settings["DoorSplits"])
 	{
 		return true;
 	}
@@ -336,6 +337,6 @@ exit
 	// Reset Timer when the Game Exit
 	if (timer.CurrentPhase != TimerPhase.Ended)
 	{
-		vars.timerModel.Reset();
+		vars.TimerModel.Reset();
 	}
 }
