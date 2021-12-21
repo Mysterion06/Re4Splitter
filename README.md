@@ -9,4 +9,4 @@
 ## Credits
   * [Wiperfinger](https://github.com/Wipe) (founder/developer)
   * [Mysterion06](https://github.com/Mysterion06) (developer)
-  * [Yuushi](https://www.speedrun.com/user/Yuushi) (developer)
+  * [Yuushi](https://github.com/yuushiGit) (developer)
