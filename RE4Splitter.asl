@@ -13,6 +13,7 @@ state("bio4")
 	int  fslPlaga       : 0x85F9EC;	// First, Second, and Last Plaga
 	int  tfPlaga        : 0x85F9F0;	// Third and Fourth Plaga
 	int  operate        : 0x850300;	// Operate Command on Button Presses
+	int  igt            : 0x85F704;	// In Game Time
 }
 
 state("bio4", "1.0.6")
@@ -30,6 +31,7 @@ state("bio4", "1.0.6")
 	int  fslPlaga       : 0x85C16C;
 	int  tfPlaga        : 0x85C170;
 	int  operate        : 0x84CA80;
+	int  igt            : 0x85BE84;
 }
 
 startup
@@ -325,7 +327,7 @@ isLoading
 reset
 {
 	// Reset Timer when the Main Menu
-	if (current.currentArea == 0 && old.currentArea != 0)
+	if (current.igt == 0 && old.igt != 0)
 	{
 		vars.ResetVariables();
 		return true;
